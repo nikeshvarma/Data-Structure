@@ -6,7 +6,7 @@ using namespace std;
 #define MAX 10
 
 // Global Variables
-int queue[MAX], front = 0, rear = 0;
+int queue[MAX], front = -1, rear = -1;
 
 
 void enqueue() {
@@ -15,7 +15,7 @@ void enqueue() {
     if (rear != MAX-1) {
         cout<<"Enter Value: ";
         cin>>value;
-        queue[rear++] = value;
+        queue[++rear] = value;
     } else {
         cout<<"Queue is full"<<endl;
     }
@@ -27,23 +27,23 @@ int dequeue() {
     if (front == rear) {
         cout<<"Queue is empty"<<endl;
     } else {
-        popItem = queue[front++];
+        popItem = queue[++front];
         return popItem;
     }
     return popItem;
 }
 
 void queueFront() {
-    cout<<queue[front]<<endl;
+    cout<<queue[front + 1]<<endl;
 }
 
 void queueRear() {
-    cout<<queue[rear - 1]<<endl;
+    cout<<queue[rear]<<endl;
 }
 
 void display() {
     cout<<"Queue: ";
-    for (int i = front; i< rear; i++)
+    for (int i = front+1; i< rear+1; i++)
         cout<<queue[i]<<" ";
 }
 
