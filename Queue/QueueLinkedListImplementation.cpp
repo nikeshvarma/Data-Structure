@@ -10,7 +10,7 @@ struct Node {
     Node *next;
 };
 
-node queue = NULL;
+node front = NULL, rear = NULL;
 
 node createNode() {
     node temp = (node)malloc(sizeof(Node));
@@ -20,38 +20,36 @@ node createNode() {
     return temp;
 }
 
-node enqueue(node head) {
-    node temp = createNode(), last = head;
+void enqueue() {
+    node temp = createNode();
 
-    if (head == NULL)
-        head = temp;
-    else {
-        while(last->next != NULL)
-            last = last->next;
-        last->next = temp;
-    }
-    return head;
-}
-
-node dequeue(node head) {
-
-    if (head == NULL) {
-        cout<<"Queue is empty"<<endl;
-        return NULL;
+    if (front == NULL && rear == NULL) {
+        front = rear = temp;
     } else {
-        head = head->next;
-        return head;
+        rear->next = temp;
+        rear = temp;
     }
 }
 
-void display(node head) {
-    if (head == NULL){
+void dequeue() {
+
+    if (front == NULL && rear == NULL) {
+        cout<<"Queue is empty"<<endl;
+    } else {
+        front = front->next;
+    }
+}
+
+void display() {
+    node ptr = front;
+
+    if (front == NULL && rear == NULL) {
         cout<<"Queue is Empty"<<endl;
     } else {
         cout<<"Queue: ";
-        while(head != NULL) {
-            cout<<head->data<<" ";
-            head = head->next;
+        while(ptr != NULL) {
+            cout<<ptr->data<<" ";
+            ptr = ptr->next;
         }
     }
 }
@@ -72,15 +70,15 @@ int main()
 
         switch (choice) {
         case 1:
-            queue = enqueue(queue);
+            enqueue();
             break;
 
         case 2:
-            queue = dequeue(queue);
+            dequeue();
             break;
 
         case 3:
-            display(queue);
+            display();
             break;
 
         case 4:
