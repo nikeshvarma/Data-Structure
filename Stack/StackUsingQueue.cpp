@@ -77,35 +77,3 @@ int main() {
     }
     return 0;
 }
-
-/*
-struct Stack {
-    queue <int> q1, q2;
-    int current_size = 0;
-
-    void push(int x) {
-
-        current_size++;
-        q2.push(x);
-
-        while(!q1.empty()) {
-            q2.push(q1.front());
-            q1.pop();
-        }
-
-        queue <int> temp = q1;
-        q1 = q2;
-        q2 = temp;
-    }
-
-    void pop() {
-        if (q1.empty())
-            return;
-        q1.pop();
-        current_size--;
-    }
-};
-
-*/
-
-
