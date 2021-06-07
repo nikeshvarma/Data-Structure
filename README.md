@@ -6,5 +6,3 @@
 3.  **Stack**
 4.  **Queue**
 5.  **Recursion**
-
-##### All of the above codes are written by me during learning. If you found any mistake please report it.
